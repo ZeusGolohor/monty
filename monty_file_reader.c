@@ -44,8 +44,11 @@ void string_reader(char *str, unsigned int line_number)
 		{
 			printf("push ");
 			i = i + 4;
-			while (str[i])
+			while (str[i] != '\0')
+			{
 				printf("%c", str[i]);
+				i++;
+			}
 		}
 		else if ((str[(i)] == 'p') && (str[(i + 1)] == 'a') && (str[(i + 2)] == 'l') && (str[(i + 3)] == 'l'))
 		{
