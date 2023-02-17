@@ -35,24 +35,50 @@ void file_reader(char **argv)
   */
 void string_reader(char *str, unsigned int line_number)
 {
-	int i = 0;
+	int i = 0, x = 0;
+	char opcode[255];
 
 	/**printf("<Line %d>: %s", line_number, string);*/
 	while(*(str + i))
 	{
 		if ((str[i] == 'p') && (str[(i + 1)] == 'u') && (str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
-			printf("push ");
 			i = i + 4;
 			while (str[i] != '\0')
 			{
-				printf("%c", str[i]);
+				if ((str[i] >= '0' && str[i] <= '9') || (str[i] == ' '))
+				{
+					if (str[i] != ' ')
+					{
+						opcode[x] = str[i];
+						x++;
+					}
+				}
+				else
+				{
+					if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
+					{
+						fprintf(stderr, "\nL%d: usage: push integer\n", line_number);
+						exit(EXIT_FAILURE);
+					}
+					else
+					{
+
+					}
+				}
 				i++;
 			}
+			opcode[x] = '\0';
+			if (opcode[0] == '\0')
+			{
+				fprintf(stderr, "\nL%d: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);				
+			}
+			printf("%s\n", opcode);
 		}
 		else if ((str[(i)] == 'p') && (str[(i + 1)] == 'a') && (str[(i + 2)] == 'l') && (str[(i + 3)] == 'l'))
 		{
-			printf("pall found!\n");
+			printf("pall\n");
 		}
 		i++;
 	}

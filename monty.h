@@ -32,4 +32,5 @@ void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 void file_reader(char **);
 void string_reader(char *, unsigned int);
+void opcode_function_caller(char *, stack_t, unsigned int);
 #endif
