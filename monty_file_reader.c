@@ -21,7 +21,8 @@ void file_reader(char **argv)
 	}
 	while (fgets(string, 255, ptr) != NULL)
 	{
-		string_reader(string, i);
+		/**string_reader(string, i);*/
+		string_reader2(string, i);
 		i++;
 	}
 	fclose(ptr);
@@ -58,7 +59,7 @@ void string_reader(char *str, unsigned int line_number)
 				{
 					if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 					{
-						fprintf(stderr, "\nL%d: usage: push integer\n", line_number);
+						fprintf(stderr, "L%d: usage: push integer\n", line_number);
 						exit(EXIT_FAILURE);
 					}
 					else
@@ -71,7 +72,7 @@ void string_reader(char *str, unsigned int line_number)
 			opcode[x] = '\0';
 			if (opcode[0] == '\0')
 			{
-				fprintf(stderr, "\nL%d: usage: push integer\n", line_number);
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);				
 			}
 			printf("%s\n", opcode);
@@ -79,6 +80,39 @@ void string_reader(char *str, unsigned int line_number)
 		else if ((str[(i)] == 'p') && (str[(i + 1)] == 'a') && (str[(i + 2)] == 'l') && (str[(i + 3)] == 'l'))
 		{
 			printf("pall\n");
+		}
+		i++;
+	}
+}
+
+/**
+  * string_reader2 - Used to read instructions from a monty file.
+  * @str: monty command.
+  * @line_number: monty file line number.
+  * Return: void.
+  */
+void string_reader2(char *str, unsigned int line_number)
+{
+	int i = 0, x = 0;
+	char code[255];
+
+	printf("L%d:", line_number);
+	while (str[i])
+	{
+		if ((str[i] == 'p') && (str[(i + 1)] == 'u') && (str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
+		{
+			i = i + 4;
+			while ((str[i] != '\0'))
+			{
+				code[x] = str[i];
+				x++;
+				i++;
+				if (str[i] == 32)
+					break;
+			}
+			code[x] = '\0';
+			printf("%s", code);
+			x = 0;
 		}
 		i++;
 	}

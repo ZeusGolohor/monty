@@ -2,6 +2,7 @@
 #define MONTY_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -32,5 +33,6 @@ void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 void file_reader(char **);
 void string_reader(char *, unsigned int);
+void string_reader2(char *, unsigned int);
 void opcode_function_caller(char *, stack_t, unsigned int);
 #endif
