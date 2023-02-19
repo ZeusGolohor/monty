@@ -51,7 +51,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 				i++;
 			while ((str[i] != '\0'))
 			{
-				if ((str[i] >= '0') && (str[i] <= '9'))
+				if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == 45))
 				{
 					code[x] = str[i];
 					x++;
@@ -60,15 +60,14 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 				{
 					if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 					{
-						while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
+						/**while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 						{
 							code[x] = str[i];
 							x++;
 							i++;
 						}
-						code[x] = '\0';
-						printf("code: %s\n", code);
-						printf("L%d: usage: push integer\n", line_number);
+						code[x] = '\0';*/
+						fprintf(stderr ,"L%d: usage: push integer\n", line_number);
 						exit(EXIT_FAILURE);
 					}
 				}
