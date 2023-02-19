@@ -89,9 +89,9 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'a') && (str[i + 2] == 'l') && (str[i + 3] == 'l'))
 		{
-			i = i + 3;
-			opcode_function_caller("pall", &(*stack), atoi(code));
-			break;
+			str[i] = '\0';
+			i = i + 4;
+			opcode_function_caller("pall", &(*stack), atoi(code));		
 		}
 		i++;
 	}
