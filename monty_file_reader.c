@@ -60,14 +60,14 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 				{
 					if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 					{
-						/**while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
+						while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 						{
 							code[x] = str[i];
 							x++;
 							i++;
 						}
-						code[x] = '\0';*/
-						fprintf(stderr ,"L%d: usage: push integer\n", line_number);
+						code[x] = '\0';
+						fprintf(stderr ,"L%d: unknown instruction push%s\n", line_number, code);
 						exit(EXIT_FAILURE);
 					}
 				}
