@@ -67,7 +67,10 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 							i++;
 						}
 						code[x] = '\0';
-						fprintf(stderr ,"L%d: unknown instruction push%s\n", line_number, code);
+						if (code[i - 1] != 32)
+							fprintf(stderr ,"L%d: unknown instruction push%s\n", line_number, code);
+						else
+							fprintf(stderr, "L%d: usage: push integer\n", line_number);
 						exit(EXIT_FAILURE);
 					}
 				}
