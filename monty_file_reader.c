@@ -91,6 +91,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		{
 			i = i + 3;
 			opcode_function_caller("pall", &(*stack), atoi(code));
+			break;
 		}
 		i++;
 	}
