@@ -29,10 +29,11 @@ struct stack_s *next;
 typedef struct instruction_s
 {
 char *opcode;
-void (*f)(stack_t **stack, unsigned int line_number);
+void (*f)(stack_t **, unsigned int);
 } instruction_t;
 void file_reader(char **);
-void string_reader(char *, unsigned int);
-void string_reader2(char *, unsigned int);
-void opcode_function_caller(char *, stack_t, unsigned int);
+void string_reader(char *, unsigned int, stack_t **);
+void opcode_function_caller(char *, stack_t **, unsigned int);
+void add_to_stack(stack_t **, unsigned int);
+void print_stack(stack_t **, unsigned int);
 #endif

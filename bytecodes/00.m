@@ -1,2 +1,5 @@
-		push 1000    push 20b0000 
-push 007
+push 1
+push 2
+push 3
+pall
+
