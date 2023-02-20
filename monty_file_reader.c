@@ -9,14 +9,15 @@
 void file_reader(char **argv)
 {
 	FILE *ptr;
-	char *filename, string[255];
+	char *filename, *string;
 	int i = 1;
 	stack_t *stack;
 
 	stack = NULL;
+	string = calloc(255, sizeof(char));
 	filename = *(argv + 1);
 	ptr = fopen(filename, "r");
-	if (ptr == NULL)
+	if ((ptr == NULL) || (string == NULL))
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
@@ -26,6 +27,9 @@ void file_reader(char **argv)
 		string_reader(string, i, &stack);
 		i++;
 	}
+	free(string);
+	if (stack != NULL)
+		free_stack(&stack);
 	fclose(ptr);
 }
 
@@ -84,14 +88,14 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
 			}
-			opcode_function_caller("push", &(*stack), atoi(code));
+			opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
 			x = 0;
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'a') && (str[i + 2] == 'l') && (str[i + 3] == 'l'))
 		{
 			str[i] = '\0';
 			i = i + 4;
-			opcode_function_caller("pall", &(*stack), atoi(code));
+			opcode_function_caller("pall", &(*stack), 0);
 			break;
 		}
 		i++;
@@ -121,5 +125,22 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int code)
 		if (opcodes[i].opcode == opcode)
 			(*opcodes[i].f)(&(*stack), code);
 		i++;
+	}
+}
+
+/**
+  * free_stack - Used to free up allocated memory.
+  * stack: head to doubly linked list.
+  * Return: void.
+  */
+void free_stack(stack_t **stack)
+{
+	stack_t *head = *stack, *temp;
+
+	while (head)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
 	}
 }
