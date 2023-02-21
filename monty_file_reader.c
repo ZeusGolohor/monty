@@ -3,7 +3,7 @@
 /**
   * file_reader - Used to read a file and perform operations based on
   * data found in a monty file.
-  * @filename: name or path to file.
+  * @argv: name or path to file.
   * Return: void.
   */
 void file_reader(char **argv)
@@ -130,7 +130,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int code)
 
 /**
   * free_stack - Used to free up allocated memory.
-  * stack: head to doubly linked list.
+  * @stack: head to doubly linked list.
   * Return: void.
   */
 void free_stack(stack_t **stack)

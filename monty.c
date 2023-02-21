@@ -2,8 +2,8 @@
 
 /**
   * main - Program entry point.
-  * @agrc - Number of arguements passed to the program.
-  * @agrv - Agruements passed to the program.
+  * @agrc: Number of arguements passed to the program.
+  * @agrv: Agruements passed to the program.
   * Return: int.
   */
 int main(int argc, char *argv[])
