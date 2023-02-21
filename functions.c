@@ -6,7 +6,8 @@
   * @code: value to be added to the stack.
   * Return: void.
   */
-void add_to_stack(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int code)
+void add_to_stack(__attribute__((unused)) stack_t **stack,
+				__attribute__((unused)) unsigned int code)
 {
 	stack_t *newnode;
 
@@ -30,7 +31,7 @@ void add_to_stack(__attribute__((unused)) stack_t **stack, __attribute__((unused
 		newnode->next = *stack;
 		(*stack)->prev = newnode;
 		*stack = newnode;
-	}	
+	}
 }
 
 /**
@@ -39,7 +40,8 @@ void add_to_stack(__attribute__((unused)) stack_t **stack, __attribute__((unused
   * @code: value to be added to the stack.
   * Return: void.
   */
-void print_stack(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int code)
+void print_stack(__attribute__((unused)) stack_t **stack,
+				__attribute__((unused)) unsigned int code)
 {
 	stack_t *head = *stack;
 

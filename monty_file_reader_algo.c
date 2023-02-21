@@ -7,10 +7,11 @@
   * @i: Used for iteration.
   * @x: Used for iteration.
   * @code: The value to be added to the stack.
-  * line_number: The current line been read from the monty bytecode txt file.
+  * @line_number: The current line been read from the monty bytecode txt file.
   * Return: void.
   */
-void push_to_stack_algo(char *str, int i, int x, char *code, unsigned int line_number)
+void push_to_stack_algo(char *str, int i, int x,
+				char *code, unsigned int line_number)
 {
 	while ((str[i] != '\0'))
 	{
@@ -23,7 +24,8 @@ void push_to_stack_algo(char *str, int i, int x, char *code, unsigned int line_n
 		{
 			if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
 			{
-				while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
+				while ((str[i] != 32) && (str[i] != '\n') &&
+								(str[i] != '\t') && (str[i] != '\v'))
 				{
 					code[x] = str[i];
 					x++;
@@ -31,7 +33,7 @@ void push_to_stack_algo(char *str, int i, int x, char *code, unsigned int line_n
 				}
 				code[x] = '\0';
 				if (str[4] != 32)
-					fprintf(stderr ,"L%d: unknown instruction push%s\n", line_number, code);
+					fprintf(stderr, "L%d: unknown instruction push%s\n", line_number, code);
 				else
 					fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);

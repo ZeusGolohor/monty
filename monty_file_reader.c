@@ -48,41 +48,12 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 
 	while (str[i])
 	{
-		if ((str[i] == 'p') && (str[(i + 1)] == 'u') && (str[(i + 2)] == 's') && (str[(i + 3)] == 'h')) 
+		if ((str[i] == 'p') && (str[(i + 1)] == 'u') &&
+						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
 			i = i + 4;
 			while (str[i] == 32)
 				i++;
-			/**while ((str[i] != '\0'))
-			{
-				if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == 45))
-				{
-					code[x] = str[i];
-					x++;
-				}
-				else
-				{
-					if ((str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
-					{
-						while ((str[i] != 32) && (str[i] != '\n') && (str[i] != '\t') && (str[i] != '\v'))
-						{
-							code[x] = str[i];
-							x++;
-							i++;
-						}
-						code[x] = '\0';
-						if (str[4] != 32)
-							fprintf(stderr ,"L%d: unknown instruction push%s\n", line_number, code);
-						else
-							fprintf(stderr, "L%d: usage: push integer\n", line_number);
-						exit(EXIT_FAILURE);
-					}
-				}
-				i++;
-				if ((str[i] == 32))
-					break;
-			}
-			code[x] = '\0';**/
 			push_to_stack_algo(str, i, x, code, line_number);
 			if (code[0] == '\0')
 			{
@@ -92,7 +63,8 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
 			x = 0;
 		}
-		else if ((str[i] == 'p') && (str[i + 1] == 'a') && (str[i + 2] == 'l') && (str[i + 3] == 'l'))
+		else if ((str[i] == 'p') && (str[i + 1] == 'a') &&
+						(str[i + 2] == 'l') && (str[i + 3] == 'l'))
 		{
 			str[i] = '\0';
 			i = i + 4;
