@@ -13,6 +13,8 @@
 void push_to_stack_algo(char *str, int i, int x,
 				char *code, unsigned int line_number)
 {
+	while (str[i] == 32)
+		i++;
 	while ((str[i] != '\0'))
 	{
 		if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == 45))
