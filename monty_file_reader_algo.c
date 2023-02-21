@@ -53,3 +53,25 @@ void push_to_stack_algo(char *str, int i, int x,
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+  * pint_stack_algo - Used to print the top of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line number been read from the monty bytecode txt
+  * file.
+  * Return: void.
+  */
+void pint_stack_algo(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = *stack;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		printf("%d\n", head->n);
+	}
+}
