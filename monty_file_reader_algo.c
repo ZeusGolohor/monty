@@ -63,8 +63,6 @@ void push_to_stack_algo(char *str, int i, int x,
   */
 void pint_stack_algo(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
-
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
@@ -72,6 +70,6 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		printf("%d\n", head->n);
+		printf("%d\n", (*stack)->n);
 	}
 }
