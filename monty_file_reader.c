@@ -51,13 +51,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		if ((str[i] == 'p') && (str[(i + 1)] == 'u') &&
 						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
-			i = i + 4;
 			push_to_stack_algo(str, i, x, code, line_number);
-			if (code[0] == '\0')
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);
-			}
 			opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
 			x = 0;
 		}
@@ -68,6 +62,11 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 4;
 			opcode_function_caller("pall", &(*stack), 0);
 			break;
+		}
+		else if ((str[i] == 'p') && (str[i + 1] == 'i') &&
+						(str[i + 2] == 'n') && (str[i + 3] == 't'))
+		{
+			printf("pint\n");
 		}
 		i++;
 	}

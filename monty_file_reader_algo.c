@@ -13,6 +13,7 @@
 void push_to_stack_algo(char *str, int i, int x,
 				char *code, unsigned int line_number)
 {
+	i = i + 4;
 	while (str[i] == 32)
 		i++;
 	while ((str[i] != '\0'))
@@ -46,4 +47,9 @@ void push_to_stack_algo(char *str, int i, int x,
 			break;
 	}
 	code[x] = '\0';
+	if (code[0] == '\0')
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
