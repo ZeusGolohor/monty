@@ -52,8 +52,6 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
 			i = i + 4;
-			/**while (str[i] == 32)
-				i++;*/
 			push_to_stack_algo(str, i, x, code, line_number);
 			if (code[0] == '\0')
 			{
