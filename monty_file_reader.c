@@ -53,7 +53,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 4;
 			while (str[i] == 32)
 				i++;
-			while ((str[i] != '\0'))
+			/**while ((str[i] != '\0'))
 			{
 				if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == 45))
 				{
@@ -82,7 +82,8 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 				if ((str[i] == 32))
 					break;
 			}
-			code[x] = '\0';
+			code[x] = '\0';**/
+			push_to_stack_algo(str, i, x, code, line_number);
 			if (code[0] == '\0')
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
