@@ -120,6 +120,5 @@ void pop_stack_algo(stack_t **stack, unsigned int line_number,
 		fprintf(stderr, "L%d: unknown instruction pop%s\n", line_number, code);
 		exit(EXIT_FAILURE);
 	}
-	/**opcode_function_caller("pop", &(*stack), line_number);*/
-	remove_top_of_stack(&(*stack), line_number);
+	opcode_function_caller("pop", &(*stack), line_number);
 }
