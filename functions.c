@@ -49,7 +49,7 @@ void print_stack(__attribute__((unused)) stack_t **stack,
 	{
 		while (head)
 		{
-			printf("%d\n", head->n);
+			fprintf(stdout, "%d\n", head->n);
 			head = head->next;
 		}
 	}
