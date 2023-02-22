@@ -72,7 +72,6 @@ void remove_top_of_stack(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->next != NULL)
 	{
-		printf("removing top1\n");
 		head = *stack;
 		temp = (*stack)->next;
 		temp->prev = NULL;
@@ -81,7 +80,6 @@ void remove_top_of_stack(stack_t **stack, unsigned int line_number)
 	}
 	else if (((*stack)->next == NULL) && ((*stack)->prev == NULL))
 	{
-		printf("removing top2\n");
 		temp = *stack;
 		free(temp);
 		*stack = NULL;

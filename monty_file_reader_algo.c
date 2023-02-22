@@ -91,3 +91,33 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number,
 		fprintf(stdout, "%d\n", (*stack)->n);
 	}
 }
+
+/**
+  * pop_stack_algo - Used to remove the top element of te stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line number been read from the monty bytecode txt
+  * file.
+  * @str: The current string been read from the monty bytecode txt.
+  * @code: The current opcode been read from the monty bytecode txt.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
+  * Return: void.
+  */ 
+void pop_stack_algo(stack_t **stack, unsigned int line_number, char *str, char *code, int i, int x)
+{
+	i = i + 3;
+	if (str[i] != 32)
+	{
+		while ((str[i] != 32) && (str[i] != '\n'))
+		{
+			code[x] = str[i];
+			x++;
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction pop%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	/**opcode_function_caller("pop", &(*stack), line_number);*/
+	remove_top_of_stack(&(*stack), line_number);
+}

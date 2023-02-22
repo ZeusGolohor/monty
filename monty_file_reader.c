@@ -70,8 +70,9 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
 		{
-			i = i + 3;
-			opcode_function_caller("pop", &(*stack), line_number);
+			pop_stack_algo(&(*stack), line_number, str, code, i, x);
+			/*i = i + 3;
+			opcode_function_caller("pop", &(*stack), line_number);*/
 		}
 		i++;
 	}
