@@ -98,7 +98,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 	i = 0;
 	while (opcodes[i].opcode != NULL)
 	{
-		if (opcodes[i].opcode == opcode)
+		if (strcmp(opcodes[i].opcode, opcode) == 0)
 			(*opcodes[i].f)(&(*stack), info);
 		i++;
 	}

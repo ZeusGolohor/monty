@@ -1,2 +1,5 @@
 push 1
-pope
+pint
+pop
+pall
+pop
