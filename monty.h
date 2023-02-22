@@ -40,4 +40,5 @@ void free_stack(stack_t **);
 void push_to_stack_algo(char *, int, int, char *, unsigned int);
 void pint_stack_algo(stack_t **, unsigned int, char *, char *,
 unsigned int, unsigned int);
+void remove_top_of_stack(stack_t **, unsigned int);
 #endif

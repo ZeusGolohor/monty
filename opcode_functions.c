@@ -54,3 +54,36 @@ void print_stack(__attribute__((unused)) stack_t **stack,
 		}
 	}
 }
+
+/**
+  * remove_top_of_stack - Used to remove the top element in a stack.
+  * @stack: Pointer to the head of the stack.
+  * @line_number: The current line been read from the monty bytecode txt file.
+  * Return: void.
+  */
+void remove_top_of_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = *stack, *temp;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->next != NULL)
+	{
+		printf("removing top1\n");
+		head = *stack;
+		temp = (*stack)->next;
+		temp->prev = NULL;
+		free(head);
+		*stack = temp;
+	}
+	else if (((*stack)->next == NULL) && ((*stack)->prev == NULL))
+	{
+		printf("removing top2\n");
+		temp = *stack;
+		free(temp);
+		*stack = NULL;
+	}
+}

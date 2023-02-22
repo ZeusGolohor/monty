@@ -68,6 +68,11 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		{
 			pint_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		else if ((str[i] == 'p') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
+		{
+			i = i + 3;
+			opcode_function_caller("pop", &(*stack), line_number);
+		}
 		i++;
 	}
 }
@@ -77,15 +82,17 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
   * function.
   * @opcode: The opcode.
   * @stack: doubly linked list head pointer.
-  * @code: The code to be added to the stack.
+  * @info: The code to be added to the stack or the current line been read from
+  * the monty bytecode txt file.
   * Return: void.
   */
-void opcode_function_caller(char *opcode, stack_t **stack, unsigned int code)
+void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 {
 	unsigned int i;
 	instruction_t opcodes[] = {
 		{"push", add_to_stack},
 		{"pall", print_stack},
+		{"pop", remove_top_of_stack},
 		{NULL, NULL}
 	};
 
@@ -93,7 +100,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int code)
 	while (opcodes[i].opcode != NULL)
 	{
 		if (opcodes[i].opcode == opcode)
-			(*opcodes[i].f)(&(*stack), code);
+			(*opcodes[i].f)(&(*stack), info);
 		i++;
 	}
 }
