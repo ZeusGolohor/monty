@@ -66,8 +66,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		else if ((str[i] == 'p') && (str[i + 1] == 'i') &&
 						(str[i + 2] == 'n') && (str[i + 3] == 't'))
 		{
-			i = i + 4;
-			pint_stack_algo(&(*stack), line_number);
+			pint_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
 		i++;
 	}

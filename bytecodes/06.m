@@ -1,2 +1,2 @@
-push 2
-pint
+push 1
+pinte

@@ -59,11 +59,29 @@ void push_to_stack_algo(char *str, int i, int x,
   * @stack: Head pointer to the stack.
   * @line_number: The current line number been read from the monty bytecode txt
   * file.
+  * @str: The current string been read from the monty bytecode txt.
+  * @code: The current opcode been read from the monty bytecode txt.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
   * Return: void.
   */
-void pint_stack_algo(stack_t **stack, unsigned int line_number)
+void pint_stack_algo(stack_t **stack, unsigned int line_number,
+				char *str, char *code, unsigned int i, unsigned int x)
 {
-	if (*(stack) == NULL)
+	i = i + 4;
+	if (str[i] != 32)
+	{
+		while ((str[i] != 32) && (str[i] != '\n'))
+		{
+			code[x] = str[i];
+			x++;
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction pint%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	else if (*(stack) == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
