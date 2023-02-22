@@ -69,6 +69,15 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number,
 				char *str, char *code, unsigned int i, unsigned int x)
 {
 	i = i + 4;
+	if (*(stack) == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		fprintf(stdout, "%d\n", (*stack)->n);
+	}
 	if (str[i] != 32)
 	{
 		while ((str[i] != 32) && (str[i] != '\n'))
@@ -80,14 +89,5 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number,
 		code[x] = '\0';
 		fprintf(stderr, "L%d: unknown instruction pint%s\n", line_number, code);
 		exit(EXIT_FAILURE);
-	}
-	else if (*(stack) == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		fprintf(stdout, "%d\n", (*stack)->n);
 	}
 }
