@@ -51,8 +51,8 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		if ((str[i] == 'p') && (str[(i + 1)] == 'u') &&
 						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
-			push_to_stack_algo(str, i, x, code, line_number);
-			opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
+			i = i + 4;
+			push_to_stack_algo(str, i, x, code, line_number, &(*stack));
 			x = 0;
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'a') &&
@@ -60,16 +60,18 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		{
 			str[i] = '\0';
 			i = i + 4;
-			opcode_function_caller("pall", &(*stack), 0);
+			pall_stack_algo(&(*stack), i);
 			break;
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'i') &&
 						(str[i + 2] == 'n') && (str[i + 3] == 't'))
 		{
+			i = i + 4;
 			pint_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
 		else if ((str[i] == 'p') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
 		{
+			i = i + 3;
 			pop_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
 		i++;

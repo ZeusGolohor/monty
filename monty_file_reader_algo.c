@@ -8,12 +8,12 @@
   * @x: Used for iteration.
   * @code: The value to be added to the stack.
   * @line_number: The current line been read from the monty bytecode txt file.
+  * @stack: Head pointer to stack.
   * Return: void.
   */
 void push_to_stack_algo(char *str, int i, int x,
-				char *code, unsigned int line_number)
+				char *code, unsigned int line_number, stack_t **stack)
 {
-	i = i + 4;
 	while (str[i] == 32)
 		i++;
 	while ((str[i] != '\0'))
@@ -52,6 +52,7 @@ void push_to_stack_algo(char *str, int i, int x,
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
 }
 
 /**
@@ -68,7 +69,6 @@ void push_to_stack_algo(char *str, int i, int x,
 void pint_stack_algo(stack_t **stack, unsigned int line_number,
 				char *str, char *code, unsigned int i, unsigned int x)
 {
-	i = i + 4;
 	if ((str[i] != 32) && (str[i] != '\n'))
 	{
 		while ((str[i] != 32) && (str[i] != '\n'))
@@ -106,7 +106,6 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number,
 void pop_stack_algo(stack_t **stack, unsigned int line_number,
 				char *str, char *code, int i, int x)
 {
-	i = i + 3;
 	if ((str[i] != 32) && (str[i] != '\n'))
 	{
 		while ((str[i] != 32))
@@ -121,4 +120,15 @@ void pop_stack_algo(stack_t **stack, unsigned int line_number,
 		exit(EXIT_FAILURE);
 	}
 	opcode_function_caller("pop", &(*stack), line_number);
+}
+
+/**
+  * pall_stack_algo - Used to print the whole stack.
+  * @stack: Head pointer to the stack.
+  * @i: data.
+  * Return: void.
+  */
+void pall_stack_algo(stack_t **stack, int i)
+{
+	opcode_function_caller("pall", &(*stack), i);
 }

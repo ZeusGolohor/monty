@@ -1,5 +1,3 @@
 push 1
-pint
-pop
-pall
-pop
+push 2
+pall pall

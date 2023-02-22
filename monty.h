@@ -37,9 +37,10 @@ void opcode_function_caller(char *, stack_t **, unsigned int);
 void add_to_stack(stack_t **, unsigned int);
 void print_stack(stack_t **, unsigned int);
 void free_stack(stack_t **);
-void push_to_stack_algo(char *, int, int, char *, unsigned int);
+void push_to_stack_algo(char *, int, int, char *, unsigned int, stack_t **);
 void pint_stack_algo(stack_t **, unsigned int, char *, char *,
 unsigned int, unsigned int);
 void remove_top_of_stack(stack_t **, unsigned int);
 void pop_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void pall_stack_algo(stack_t **stack, int);
 #endif
