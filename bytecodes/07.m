@@ -1,1 +1,2 @@
-pop
+push 1
+pope

@@ -102,15 +102,17 @@ void pint_stack_algo(stack_t **stack, unsigned int line_number,
   * @i: Used for iteration.
   * @x: Used for iteration.
   * Return: void.
-  */ 
-void pop_stack_algo(stack_t **stack, unsigned int line_number, char *str, char *code, int i, int x)
+  */
+void pop_stack_algo(stack_t **stack, unsigned int line_number,
+				char *str, char *code, int i, int x)
 {
 	i = i + 3;
 	if ((str[i] != 32) && (str[i] != '\n'))
 	{
 		while ((str[i] != 32))
 		{
-			code[x] = str[i];
+			if (str[i] != '\n')
+				code[x] = str[i];
 			x++;
 			i++;
 		}
