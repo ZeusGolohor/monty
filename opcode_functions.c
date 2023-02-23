@@ -6,7 +6,7 @@
   * @code: value to be added to the stack.
   * Return: void.
   */
-void add_to_stack(__attribute__((unused)) stack_t **stack,
+void add_to_stack(stack_t **stack,
 				__attribute__((unused)) unsigned int code)
 {
 	stack_t *newnode;
@@ -40,7 +40,7 @@ void add_to_stack(__attribute__((unused)) stack_t **stack,
   * @code: value to be added to the stack.
   * Return: void.
   */
-void print_stack(__attribute__((unused)) stack_t **stack,
+void print_stack(stack_t **stack,
 				__attribute__((unused)) unsigned int code)
 {
 	stack_t *head = *stack;
@@ -84,4 +84,25 @@ void remove_top_of_stack(stack_t **stack, unsigned int line_number)
 		free(temp);
 		*stack = NULL;
 	}
+}
+
+/**
+  * swap_stack - Used to swap the two elements of a stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode txt file.
+  * Return: void.
+  */
+void swap_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	(*stack)->n = second;
+	(*stack)->next->n = first;
 }

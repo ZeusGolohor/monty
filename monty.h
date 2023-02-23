@@ -42,5 +42,7 @@ void pint_stack_algo(stack_t **, unsigned int, char *, char *,
 unsigned int, unsigned int);
 void remove_top_of_stack(stack_t **, unsigned int);
 void pop_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
-void pall_stack_algo(stack_t **stack, int);
+void pall_stack_algo(stack_t **, int);
+void swap_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void swap_stack(stack_t **, unsigned int);
 #endif
