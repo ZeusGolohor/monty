@@ -85,6 +85,11 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 3;
 			add_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		else if ((str[i] == 'n') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
+		{
+			i = i + 3;
+			nop_stack_algo(line_number, str, code, i, x);
+		}
 		i++;
 	}
 }
