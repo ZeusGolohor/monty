@@ -45,4 +45,6 @@ void pop_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void pall_stack_algo(stack_t **, int);
 void swap_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void swap_stack(stack_t **, unsigned int);
+void add_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void add_stack(stack_t **, unsigned int);
 #endif

@@ -52,7 +52,7 @@ void push_to_stack_algo(char *str, int i, int x,
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	opcode_function_caller("push", &(*stack), (unsigned int) atoi(code));
+	opcode_function_caller("push", &(*stack), atoi(code));
 }
 
 /**

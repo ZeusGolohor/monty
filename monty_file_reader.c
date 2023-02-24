@@ -80,6 +80,11 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 4;
 			swap_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		else if ((str[i] == 'a') && (str[i + 1] == 'd') && (str[i + 2] == 'd'))
+		{
+			i = i + 3;
+			add_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
 		i++;
 	}
 }
@@ -101,6 +106,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"pall", print_stack},
 		{"pop", remove_top_of_stack},
 		{"swap", swap_stack},
+		{"add", add_stack},
 		{NULL, NULL}
 	};
 

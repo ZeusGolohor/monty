@@ -106,3 +106,25 @@ void swap_stack(stack_t **stack, unsigned int line_number)
 	(*stack)->n = second;
 	(*stack)->next->n = first;
 }
+
+/**
+  * add_stack - Used to add the top two elements of a stack, store the
+  * result in the second, the pop the top of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void add_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	(*stack)->next->n = (first + second);
+	opcode_function_caller("pop", &(*stack), line_number);
+}
