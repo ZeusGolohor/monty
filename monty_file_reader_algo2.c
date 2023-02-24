@@ -27,7 +27,6 @@ void add_stack_algo(stack_t **stack, unsigned int line_number,
 		}
 		code[x] = '\0';
 		fprintf(stderr, "L%d: unknown instruction add%s\n", line_number, code);
-		printf("%ld\n", strlen(code));
 		exit(EXIT_FAILURE);
 	}
 	opcode_function_caller("add", &(*stack), line_number);
