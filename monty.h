@@ -48,4 +48,6 @@ void swap_stack(stack_t **, unsigned int);
 void add_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void add_stack(stack_t **, unsigned int);
 void nop_stack_algo(unsigned int, char *, char *, int, int);
+void sub_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void sub_stack(stack_t **, unsigned int);
 #endif

@@ -128,3 +128,25 @@ void add_stack(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (first + second);
 	opcode_function_caller("pop", &(*stack), line_number);
 }
+
+/**
+  * sub_stack - Used to subtract the top two element of the stack, store the
+  * result in the second element, then pop the first.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * @line_number: The current line been read from the monty bytecode file.
+  */
+void sub_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	(*stack)->next->n = (second - first);
+	opcode_function_caller("pop", &(*stack), line_number);
+}

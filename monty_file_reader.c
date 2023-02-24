@@ -90,6 +90,11 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 3;
 			nop_stack_algo(line_number, str, code, i, x);
 		}
+		else if ((str[i] == 's') && (str[i + 1] == 'u') && (str[i + 2] == 'b'))
+		{
+			i = i + 3;
+			sub_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
 		i++;
 	}
 }
@@ -112,6 +117,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"pop", remove_top_of_stack},
 		{"swap", swap_stack},
 		{"add", add_stack},
+		{"sub", sub_stack},
 		{NULL, NULL}
 	};
 
