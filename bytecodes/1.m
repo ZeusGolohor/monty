@@ -1,7 +1,4 @@
-push 50
-push 5
-pall
-div
-pall
-mod
+push 402
+push 98
+mod Holberton
 pall

@@ -218,7 +218,7 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 	}
 	first = (*stack)->n;
 	second = (*stack)->next->n;
-	(*stack)->next->n = (second * first);
+	(*stack)->next->n = (second % first);
 	opcode_function_caller("pop", &(*stack), line_number);
 }
 
