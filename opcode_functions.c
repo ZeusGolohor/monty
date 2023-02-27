@@ -218,6 +218,11 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 	}
 	first = (*stack)->n;
 	second = (*stack)->next->n;
+	if (first == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	(*stack)->next->n = (second % first);
 	opcode_function_caller("pop", &(*stack), line_number);
 }
