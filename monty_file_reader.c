@@ -44,10 +44,13 @@ void file_reader(char **argv)
 void string_reader(char *str, unsigned int line_number, stack_t **stack)
 {
 	int i = 0, x = 0;
+	/** Used to store a single line from the monty bytecode file */
 	char code[255];
 
+	/** Loop throught a single line from the monty bytecode file */
 	while (str[i])
 	{
+		/** opcode push check */
 		if ((str[i] == 'p') && (str[(i + 1)] == 'u') &&
 						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
@@ -55,6 +58,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			push_to_stack_algo(str, i, x, code, line_number, &(*stack));
 			x = 0;
 		}
+		/** opcode pall check */
 		else if ((str[i] == 'p') && (str[i + 1] == 'a') &&
 						(str[i + 2] == 'l') && (str[i + 3] == 'l'))
 		{
@@ -63,37 +67,49 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			pall_stack_algo(&(*stack), i);
 			break;
 		}
+		/** opcode pint check */
 		else if ((str[i] == 'p') && (str[i + 1] == 'i') &&
 						(str[i + 2] == 'n') && (str[i + 3] == 't'))
 		{
 			i = i + 4;
 			pint_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode pop check */
 		else if ((str[i] == 'p') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
 		{
 			i = i + 3;
 			pop_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode swap check */
 		else if ((str[i] == 's') && (str[i + 1] == 'w') &&
 						(str[i + 2] == 'a') && (str[i + 3] == 'p'))
 		{
 			i = i + 4;
 			swap_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode add check */
 		else if ((str[i] == 'a') && (str[i + 1] == 'd') && (str[i + 2] == 'd'))
 		{
 			i = i + 3;
 			add_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode nop check */
 		else if ((str[i] == 'n') && (str[i + 1] == 'o') && (str[i + 2] == 'p'))
 		{
 			i = i + 3;
 			nop_stack_algo(line_number, str, code, i, x);
 		}
+		/** opcode sub check */
 		else if ((str[i] == 's') && (str[i + 1] == 'u') && (str[i + 2] == 'b'))
 		{
 			i = i + 3;
 			sub_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
+		/** opcode div check */
+		else if ((str[i] == 'd') && (str[i + 1] == 'i') && (str[i + 2] == 'v'))
+		{
+			i = i + 3;
+			div_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
 		i++;
 	}
@@ -114,7 +130,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 	instruction_t opcodes[] = {
 		{"push", add_to_stack},
 		{"pall", print_stack},
-		{"pop", remove_top_of_stack},
+		{"pop", pop_stack},
 		{"swap", swap_stack},
 		{"add", add_stack},
 		{"sub", sub_stack},

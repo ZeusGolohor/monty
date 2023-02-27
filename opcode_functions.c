@@ -56,12 +56,12 @@ void print_stack(stack_t **stack,
 }
 
 /**
-  * remove_top_of_stack - Used to remove the top element in a stack.
+  * pop_stack - Used to remove the top element in a stack.
   * @stack: Pointer to the head of the stack.
   * @line_number: The current line been read from the monty bytecode txt file.
   * Return: void.
   */
-void remove_top_of_stack(stack_t **stack, unsigned int line_number)
+void pop_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack, *temp;
 
@@ -134,7 +134,6 @@ void add_stack(stack_t **stack, unsigned int line_number)
   * result in the second element, then pop the first.
   * @stack: Head pointer to the stack.
   * @line_number: The current line been read from the monty bytecode file.
-  * @line_number: The current line been read from the monty bytecode file.
   */
 void sub_stack(stack_t **stack, unsigned int line_number)
 {
@@ -150,3 +149,30 @@ void sub_stack(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (second - first);
 	opcode_function_caller("pop", &(*stack), line_number);
 }
+
+/**
+  * div_stack - Used to divide the second top element of the stack by
+  * the top element of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  */
+void div_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	if (first == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n = (second / first);
+	opcode_function_caller("pop", &(*stack), line_number);
+}
+
