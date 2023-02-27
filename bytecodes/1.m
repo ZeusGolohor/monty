@@ -3,5 +3,5 @@ push 5
 pall
 div
 pall
-mul
+mod
 pall

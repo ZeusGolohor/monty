@@ -200,3 +200,25 @@ void mul_stack(stack_t **stack, unsigned int line_number)
 	opcode_function_caller("pop", &(*stack), line_number);
 }
 
+/**
+  * mod_stack - Used to compute the rest of the division of the second
+  * top element of the stack by the top element of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void mod_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	(*stack)->next->n = (second * first);
+	opcode_function_caller("pop", &(*stack), line_number);
+}
+

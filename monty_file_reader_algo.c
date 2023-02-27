@@ -225,3 +225,35 @@ void mul_stack_algo(stack_t **stack, unsigned int line_number,
 	}
 	opcode_function_caller("mul", &(*stack), line_number);
 }
+
+/**
+  * mod_stack_algo - Used to compute the rest of the division of 
+  * the second top element of the stack by the top element of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The curent line been read from the monty bytecode txt file.
+  * @str: The current string been read from the monty bytecode txt file.
+  * @code: The current code from the monty bytecode txt file.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
+  * Return: void.
+  */
+void mod_stack_algo(stack_t **stack, unsigned int line_number,
+				char *str, char *code, int i, int x)
+{
+	if ((str[i] != 32) && (str[i] != '\n'))
+	{
+		while ((str[i] != 32))
+		{
+			if (str[i] != '\n')
+			{
+				code[x] = str[i];
+				x++;
+			}
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction mod%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	opcode_function_caller("mod", &(*stack), line_number);
+}
