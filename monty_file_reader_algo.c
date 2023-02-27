@@ -191,5 +191,5 @@ void div_stack_algo(stack_t **stack, unsigned int line_number,
 		fprintf(stderr, "L%d: unknown instruction div%s\n", line_number, code);
 		exit(EXIT_FAILURE);
 	}
-	opcode_function_caller("sub", &(*stack), line_number);
+	opcode_function_caller("div", &(*stack), line_number);
 }

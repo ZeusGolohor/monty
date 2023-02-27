@@ -134,6 +134,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"swap", swap_stack},
 		{"add", add_stack},
 		{"sub", sub_stack},
+		{"div", div_stack},
 		{NULL, NULL}
 	};
 
