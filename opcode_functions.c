@@ -134,6 +134,7 @@ void add_stack(stack_t **stack, unsigned int line_number)
   * result in the second element, then pop the first.
   * @stack: Head pointer to the stack.
   * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
   */
 void sub_stack(stack_t **stack, unsigned int line_number)
 {
@@ -155,6 +156,7 @@ void sub_stack(stack_t **stack, unsigned int line_number)
   * the top element of the stack.
   * @stack: Head pointer to the stack.
   * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
   */
 void div_stack(stack_t **stack, unsigned int line_number)
 {
@@ -173,6 +175,28 @@ void div_stack(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (second / first);
+	opcode_function_caller("pop", &(*stack), line_number);
+}
+
+/**
+  * mul_stack - Used to multiple the second top element of the
+  * stack with the top element of the stack.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void mul_stack(stack_t **stack, unsigned int line_number)
+{
+	int first, second;
+
+	if ((*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	first = (*stack)->n;
+	second = (*stack)->next->n;
+	(*stack)->next->n = (second * first);
 	opcode_function_caller("pop", &(*stack), line_number);
 }
 

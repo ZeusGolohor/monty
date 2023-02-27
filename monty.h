@@ -52,4 +52,6 @@ void sub_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void sub_stack(stack_t **, unsigned int);
 void div_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void div_stack(stack_t **, unsigned int);
+void mul_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void mul_stack(stack_t **, unsigned int);
 #endif

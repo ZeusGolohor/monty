@@ -111,6 +111,12 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 3;
 			div_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode mul check */
+		else if ((str[i] == 'm') && (str[i + 1] == 'u') && (str[i + 2] == 'l'))
+		{
+			i = i + 3;
+			mul_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
 		i++;
 	}
 }
@@ -135,6 +141,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"add", add_stack},
 		{"sub", sub_stack},
 		{"div", div_stack},
+		{"mul", mul_stack},
 		{NULL, NULL}
 	};
 
