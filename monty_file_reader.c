@@ -123,6 +123,21 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 3;
 			mod_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode #(comment) check */
+		else if ((str[i] == '#'))
+		{
+			/**i = i + 1;
+			if (str[i] == 32)
+				i++;
+			while ((str[i] != '\0') && (str[i] != '\n'))
+			{
+				printf("%c", str[i]);
+				i++;
+			}
+			printf("\n");*/
+			if (str[0] != 32)
+				break;
+		}
 		i++;
 	}
 }
