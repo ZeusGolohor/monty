@@ -227,3 +227,20 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 	opcode_function_caller("pop", &(*stack), line_number);
 }
 
+/**
+  * pchar_stack - This is used t print the char at the top of
+  * the stack, followed by a new line.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void pchar_stack(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stdin, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	fprintf(stdout, "%c\n", (*stack)->n);
+}
+

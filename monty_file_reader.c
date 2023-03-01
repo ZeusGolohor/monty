@@ -129,6 +129,13 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			if (str[0] != 32)
 				break;
 		}
+		/** opcode pchar check */
+		else if ((str[i] == 'p') && (str[i + 1] == 'c') && (str[i + 2] == 'h')
+						&& (str[i + 3] == 'a') && (str[i + 4] == 'r'))
+		{
+			i = i + 5;
+			pchar_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
 		i++;
 	}
 }
@@ -155,6 +162,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"div", div_stack},
 		{"mul", mul_stack},
 		{"mod", mod_stack},
+		{"pchar", pchar_stack},
 		{NULL, NULL}
 	};
 

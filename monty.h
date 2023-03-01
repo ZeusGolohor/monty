@@ -56,4 +56,6 @@ void mul_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void mul_stack(stack_t **, unsigned int);
 void mod_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void mod_stack(stack_t **, unsigned int);
+void pchar_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void pchar_stack(stack_t **, unsigned int);
 #endif

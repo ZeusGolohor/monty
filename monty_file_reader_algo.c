@@ -227,7 +227,7 @@ void mul_stack_algo(stack_t **stack, unsigned int line_number,
 }
 
 /**
-  * mod_stack_algo - Used to compute the rest of the division of 
+  * mod_stack_algo - Used to compute the rest of the division of
   * the second top element of the stack by the top element of the stack.
   * @stack: Head pointer to the stack.
   * @line_number: The curent line been read from the monty bytecode txt file.

@@ -92,3 +92,41 @@ void sub_stack_algo(stack_t **stack, unsigned int line_number,
 	}
 	opcode_function_caller("sub", &(*stack), line_number);
 }
+
+/**
+  * pchar_stack_algo - Used to print char at the top of the stack,
+  * followed by a new line.
+  * @stack: Head pointer to the stack.
+  * @line_number: The curent line been read from the monty bytecode txt file.
+  * @str: The current string been read from the monty bytecode txt file.
+  * @code: The current code from the monty bytecode txt file.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
+  * Return: void.
+  */
+void pchar_stack_algo(stack_t **stack, unsigned int line_number,
+				char *str, char *code, int i, int x)
+{
+	if ((str[i] != 32) && (str[i] != '\n'))
+	{
+		while ((str[i] != 32))
+		{
+			if (str[i] != '\n')
+			{
+				code[x] = str[i];
+				x++;
+			}
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction pchar%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	if ((atoi(code) >= 0) && (atoi(code) <= 127))
+		opcode_function_caller("pchar", &(*stack), line_number);
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
