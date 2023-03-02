@@ -17,9 +17,14 @@ void file_reader(char **argv)
 	string = calloc(255, sizeof(char));
 	filename = *(argv + 1);
 	ptr = fopen(filename, "r");
-	if ((ptr == NULL) || (string == NULL))
+	if (ptr == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
+	if (string == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(string, 255, ptr) != NULL)
@@ -45,8 +50,14 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 {
 	int i = 0, x = 0;
 	/** Used to store a single line from the monty bytecode file */
-	char code[255];
+	char *code;
 
+	code = calloc(255, sizeof(char));
+	if (code == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	/** Loop throught a single line from the monty bytecode file */
 	while (str[i])
 	{
