@@ -104,7 +104,7 @@ void sub_stack_algo(stack_t **stack, unsigned int line_number,
   * @x: Used for iteration.
   * Return: void.
   */
-void pchar_stack_algo(__attribute__((unused)) stack_t **stack, unsigned int line_number,
+void pchar_stack_algo(stack_t **stack, unsigned int line_number,
 				char *str, char *code, int i, int x)
 {
 	if ((str[i] != 32) && (str[i] != '\n'))
@@ -123,13 +123,4 @@ void pchar_stack_algo(__attribute__((unused)) stack_t **stack, unsigned int line
 		exit(EXIT_FAILURE);
 	}
 	opcode_function_caller("pchar", &(*stack), line_number);
-	if (((*stack)->n >= 0) && ((*stack)->n <= 127))
-	{
-		fprintf(stdout, "%d\n", (*stack)->n);
-	}
-	else
-	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 }
