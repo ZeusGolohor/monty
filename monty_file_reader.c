@@ -149,6 +149,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		}
 		i++;
 	}
+	free(code);
 }
 
 /**
