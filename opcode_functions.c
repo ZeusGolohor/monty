@@ -271,10 +271,11 @@ void pstr_stack(stack_t **stack,
 	while (temp)
 	{
 		if ((temp->n == 0) || !((temp->n >= 0) && (temp->n <= 127)))
+		{
+			fprintf(stdout, "\n");
 			break;
+		}
 		fprintf(stdout, "%c", temp->n);
 		temp = temp->next;
-		if (temp == NULL)
-			fprintf(stdout, "\n");
 	}
 }
