@@ -228,7 +228,7 @@ void mod_stack(stack_t **stack, unsigned int line_number)
 }
 
 /**
-  * pchar_stack - This is used t print the char at the top of
+  * pchar_stack - This is used to print the char at the top of
   * the stack, followed by a new line.
   * @stack: Head pointer to the stack.
   * @line_number: The current line been read from the monty bytecode file.
@@ -252,3 +252,28 @@ void pchar_stack(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+  * pstr_stack - This used to print string starting at the top
+  * of the stack, followed by a new line.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void pstr_stack(stack_t **stack,
+				__attribute((unused)) unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stdout, "\n");
+	}
+	while (temp)
+	{
+		if ((temp->n == 0) || !((temp->n >= 0) && (temp->n <= 127)))
+			break;
+		fprintf(stdout, "%c", temp->n);
+		temp = temp->next;
+	}
+	fprintf(stdout, "\n");
+}
