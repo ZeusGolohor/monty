@@ -60,4 +60,6 @@ void pchar_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void pchar_stack(stack_t **, unsigned int);
 void pstr_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void pstr_stack(stack_t **, unsigned int);
+void rotl_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
+void rotl_stack(stack_t **, unsigned int);
 #endif

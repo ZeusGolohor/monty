@@ -278,3 +278,37 @@ void pstr_stack(stack_t **stack,
 	if (*stack != NULL)
 		fprintf(stdout, "\n");
 }
+
+/**
+  * rotl_stack - This is user to rotate the stack to the top.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void rotl_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	int top_n = temp->n;
+	stack_t *newnode;
+
+	newnode = malloc(sizeof(stack_t));
+	if (newnode == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	while (temp)
+	{
+		if (temp->next == NULL)
+		{
+			newnode->n = top_n;
+			newnode->prev = temp;
+			newnode->next = NULL;
+			temp->next = newnode;
+			break;
+		}
+		temp = temp->next;
+	}
+	opcode_function_caller("pop", &(*stack), line_number);
+}
