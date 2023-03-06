@@ -288,9 +288,12 @@ void pstr_stack(stack_t **stack,
 void rotl_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	int top_n = temp->n;
+	int top_n;
 	stack_t *newnode;
 
+	if (*stack == NULL)
+		exit(EXIT_SUCCESS);
+	top_n = temp->n;
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
