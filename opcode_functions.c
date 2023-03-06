@@ -316,3 +316,30 @@ void rotl_stack(stack_t **stack, unsigned int line_number)
 		opcode_function_caller("pop", &(*stack), line_number);
 	}
 }
+
+/**
+  * rotr_stack - This rotates the stack to the bottom.
+  * @stack: Head pointer to the stack.
+  * @line_number: The current line been read from the monty bytecode file.
+  * Return: void.
+  */
+void rotr_stack(stack_t **stack, __attribute((unused))
+				unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	
+	if (*stack != NULL)
+	{
+		while (temp)
+		{
+			if (temp->next == NULL)
+			{
+				opcode_function_caller("push", &(*stack), temp->n);
+				temp->prev->next = NULL;
+				free(temp);
+				break;
+			}
+			temp = temp->next;
+		}
+	}
+}

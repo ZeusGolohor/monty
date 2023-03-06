@@ -154,12 +154,19 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 4;
 			pstr_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
-		/** opcode rotl opcode */
+		/** opcode rotl check */
 		else if ((str[i] == 'r') && (str[i + 1] == 'o') &&
 						(str[i + 2] == 't') && (str[i + 3] == 'l'))
 		{
 			i = i + 4;
 			rotl_stack_algo(&(*stack), line_number, str, code, i, x);
+		}
+		/** opcode rotr check */
+		else if ((str[i] == 'r') && (str[i + 1] == 'o') &&
+						(str[i + 2] == 't') && (str[i + 3] == 'r'))
+		{
+			i = i + 4;
+			rotr_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
 		i++;
 	}
@@ -191,6 +198,7 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 		{"pchar", pchar_stack},
 		{"pstr", pstr_stack},
 		{"rotl", rotl_stack},
+		{"rotr", rotr_stack},
 		{NULL, NULL}
 	};
 
