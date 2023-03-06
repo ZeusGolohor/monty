@@ -291,27 +291,28 @@ void rotl_stack(stack_t **stack, unsigned int line_number)
 	int top_n;
 	stack_t *newnode;
 
-	if (*stack == NULL)
-		exit(EXIT_SUCCESS);
-	top_n = temp->n;
-	newnode = malloc(sizeof(stack_t));
-	if (newnode == NULL)
+	if (*stack != NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (temp)
-	{
-		if (temp->next == NULL)
+		top_n = temp->n;
+		newnode = malloc(sizeof(stack_t));
+		if (newnode == NULL)
 		{
-			newnode->n = top_n;
-			newnode->prev = temp;
-			newnode->next = NULL;
-			temp->next = newnode;
-			break;
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
 		}
-		temp = temp->next;
+
+		while (temp)
+		{
+			if (temp->next == NULL)
+			{
+				newnode->n = top_n;
+				newnode->prev = temp;
+				newnode->next = NULL;
+				temp->next = newnode;
+				break;
+			}
+			temp = temp->next;
+		}
+		opcode_function_caller("pop", &(*stack), line_number);
 	}
-	opcode_function_caller("pop", &(*stack), line_number);
 }
