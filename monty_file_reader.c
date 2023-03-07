@@ -66,7 +66,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 						(str[(i + 2)] == 's') && (str[(i + 3)] == 'h'))
 		{
 			i = i + 4;
-			push_to_stack_algo(str, i, x, code, line_number, &(*stack));
+			push_stack_algo(str, i, x, code, line_number, &(*stack));
 			x = 0;
 		}
 		/** opcode pall check */
@@ -75,7 +75,7 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 		{
 			str[i] = '\0';
 			i = i + 4;
-			pall_stack_algo(&(*stack), i);
+			pall_stack_algo(&(*stack), line_number, str, code, i, x);
 			break;
 		}
 		/** opcode pint check */
@@ -168,6 +168,20 @@ void string_reader(char *str, unsigned int line_number, stack_t **stack)
 			i = i + 4;
 			rotr_stack_algo(&(*stack), line_number, str, code, i, x);
 		}
+		/** opcode stack check */
+		else if ((str[i] == 's') && (str[i + 1] == 't') && (str[i + 2] == 'a')
+						&& (str[i + 3] == 'c') && (str[i + 4] == 'k'))
+		{
+			i = i + 5;
+			stack_algo(line_number, str, code, i, x);
+		}
+		/** opcode queue check */
+		else if ((str[i] == 'q') && (str[i + 1] == 'u') && (str[i + 2] == 'e')
+						&& (str[i + 3] == 'u') && (str[i + 4] == 'e'))
+		{
+			i = i + 5;
+			queue_algo(line_number, str, code, i, x);
+		}
 		i++;
 	}
 	free(code);
@@ -186,8 +200,8 @@ void opcode_function_caller(char *opcode, stack_t **stack, unsigned int info)
 {
 	unsigned int i;
 	instruction_t opcodes[] = {
-		{"push", add_to_stack},
-		{"pall", print_stack},
+		{"push", push_stack},
+		{"pall", pall_stack},
 		{"pop", pop_stack},
 		{"swap", swap_stack},
 		{"add", add_stack},

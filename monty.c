@@ -1,5 +1,6 @@
 #include "monty.h"
-
+/** Setting stack format to default. */
+int FORMAT = 0;
 /**
   * main - Program entry point.
   * @argc: Number of arguements passed to the program.

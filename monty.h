@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 /**
+  * A global variable to used to switch between stack (LIFO)
+  * and queue (FIFO).
+  */
+extern int FORMAT;
+/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -34,15 +39,15 @@ void (*f)(stack_t **, unsigned int);
 void file_reader(char **);
 void string_reader(char *, unsigned int, stack_t **);
 void opcode_function_caller(char *, stack_t **, unsigned int);
-void add_to_stack(stack_t **, unsigned int);
-void print_stack(stack_t **, unsigned int);
 void free_stack(stack_t **);
-void push_to_stack_algo(char *, int, int, char *, unsigned int, stack_t **);
+void push_stack(stack_t **, unsigned int);
+void push_stack_algo(char *, int, int, char *, unsigned int, stack_t **);
 void pint_stack_algo(stack_t **, unsigned int, char *, char *,
 unsigned int, unsigned int);
 void pop_stack(stack_t **, unsigned int);
 void pop_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
-void pall_stack_algo(stack_t **, int);
+void pall_stack(stack_t **, unsigned int);
+void pall_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void swap_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void swap_stack(stack_t **, unsigned int);
 void add_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
@@ -64,4 +69,6 @@ void rotl_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void rotl_stack(stack_t **, unsigned int);
 void rotr_stack_algo(stack_t **, unsigned int, char *, char *, int, int);
 void rotr_stack(stack_t **, unsigned int);
+void stack_algo(unsigned int, char *, char *, int, int);
+void queue_algo(unsigned int, char *, char *, int, int);
 #endif

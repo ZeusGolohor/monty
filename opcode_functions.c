@@ -1,15 +1,16 @@
 #include "monty.h"
 
 /**
-  * add_to_stack - Used to add to the stack.
+  * push_stack - Used to add to the stack.
   * @stack: head to doubly linked list.
   * @code: value to be added to the stack.
   * Return: void.
   */
-void add_to_stack(stack_t **stack,
+void push_stack(stack_t **stack,
 				__attribute__((unused)) unsigned int code)
 {
 	stack_t *newnode;
+	stack_t *temp;
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
@@ -17,30 +18,59 @@ void add_to_stack(stack_t **stack,
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (*stack == NULL)
+	if (FORMAT == 0)
 	{
-		newnode->n = code;
-		newnode->prev = NULL;
-		newnode->next = NULL;
-		*stack = newnode;
+		if (*stack == NULL)
+		{
+			newnode->n = code;
+			newnode->prev = NULL;
+			newnode->next = NULL;
+			*stack = newnode;
+		}
+		else if ((*stack != NULL) && ((*stack)->prev == NULL))
+		{
+			newnode->n = code;
+			newnode->prev = NULL;
+			newnode->next = *stack;
+			(*stack)->prev = newnode;
+			*stack = newnode;
+		}
 	}
-	else if ((*stack != NULL) && ((*stack)->prev == NULL))
+	else if (FORMAT == 1)
 	{
-		newnode->n = code;
-		newnode->prev = NULL;
-		newnode->next = *stack;
-		(*stack)->prev = newnode;
-		*stack = newnode;
+		if (*stack != NULL)
+		{
+			temp = *stack;
+			while (temp)
+			{
+				if (temp->next == NULL)
+				{
+					newnode->n = code;
+					newnode->next = NULL;
+					newnode->prev = temp;
+					temp->next = newnode;
+					break;
+				}
+				temp = temp->next;
+			}
+		}
+		else if (*stack == NULL)
+		{
+			newnode->n = code;
+			newnode->prev = NULL;
+			newnode->next = NULL;
+			*stack = newnode;
+		}
 	}
 }
 
 /**
-  * print_stack - Used to [rint the stack.
+  * pall_stack - Used to [rint the stack.
   * @stack: head to doubly linked list.
   * @code: value to be added to the stack.
   * Return: void.
   */
-void print_stack(stack_t **stack,
+void pall_stack(stack_t **stack,
 				__attribute__((unused)) unsigned int code)
 {
 	stack_t *head = *stack;
@@ -327,7 +357,7 @@ void rotr_stack(stack_t **stack, __attribute((unused))
 				unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	
+
 	if (*stack != NULL)
 	{
 		while (temp)

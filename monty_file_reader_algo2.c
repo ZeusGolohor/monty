@@ -218,3 +218,63 @@ void rotr_stack_algo(stack_t **stack, unsigned int line_number,
 	}
 	opcode_function_caller("rotr", &(*stack), line_number);
 }
+
+/**
+  * stack_algo - Used to change the stack format to (FIFO).
+  * @line_number: The curent line been read from the monty bytecode txt file.
+  * @str: The current string been read from the monty bytecode txt file.
+  * @code: The current code from the monty bytecode txt file.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
+  * Return: void.
+  */
+void stack_algo(unsigned int line_number,
+			char *str, char *code, int i, int x)
+{
+	if ((str[i] != 32) && (str[i] != '\n'))
+	{
+		while ((str[i] != 32))
+		{
+			if (str[i] != '\n')
+			{
+				code[x] = str[i];
+				x++;
+			}
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction stack%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	FORMAT = 0;
+}
+
+/**
+  * queue_algo - Used to change the stack format to (FIFO).
+  * @line_number: The curent line been read from the monty bytecode txt file.
+  * @str: The current string been read from the monty bytecode txt file.
+  * @code: The current code from the monty bytecode txt file.
+  * @i: Used for iteration.
+  * @x: Used for iteration.
+  * Return: void.
+  */
+void queue_algo(unsigned int line_number,
+			char *str, char *code, int i, int x)
+{
+	if ((str[i] != 32) && (str[i] != '\n'))
+	{
+		while ((str[i] != 32))
+		{
+			if (str[i] != '\n')
+			{
+				code[x] = str[i];
+				x++;
+			}
+			i++;
+		}
+		code[x] = '\0';
+		fprintf(stderr, "L%d: unknown instruction queue%s\n", line_number, code);
+		exit(EXIT_FAILURE);
+	}
+	FORMAT = 1;
+}
