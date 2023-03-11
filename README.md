@@ -1,6 +1,6 @@
-## Monty Bytecode Interpreter
+# Monty Bytecode Interpreter
 
-# Documentation
+## Documentation
 
 Monty is a programming language that uses a stack data structure. This repository contains an implementation of the Monty language in C.
 
@@ -41,7 +41,7 @@ The Monty language is a simple programming language that uses a stack data struc
 - `stack`: sets the format of the data to a stack (LIFO). This is the default behavior of the program.
 - `queue`: sets the format of the data to a queue (FIFO).
 
-# Author
+## Author
 Golohor Ufuoma Emmanuel Zeus
 
 
